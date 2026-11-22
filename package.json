@@ -1,0 +1,18 @@
+{
+  "name": "my-wedding-beta",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,client -c blue,green \"npm:dev --workspace @wedding/server\" \"npm:dev --workspace @wedding/client\"",
+    "build": "npm run build --workspace @wedding/server && npm run build --workspace @wedding/client",
+    "typecheck": "npm run typecheck --workspace @wedding/server && npm run typecheck --workspace @wedding/client",
+    "test": "npm run test --workspace @wedding/server",
+    "admin:create": "npm run admin:create --workspace @wedding/server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
